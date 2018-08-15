@@ -1,21 +1,21 @@
 #
-# Given your birthday and the current date, calculate your age in days. 
-# Account for leap days. 
+# Given your birthday and the current date, calculate your age in days.
+# Account for leap days.
 #
-# Assume that the birthday and current date are correct dates. 
+# Assume that the birthday and current date are correct dates.
 #
 
 def daysBetweenDates(year1, month1, day1, year2, month2, day2):
-    ##
+    ## just checking
     # Your code here.
     ##
-    return days           
+    return days
 
 
 # Test routine
 
 def test():
-    test_cases = [((2012,1,1,2012,2,28), 58), 
+    test_cases = [((2012,1,1,2012,2,28), 58),
                   ((2012,1,1,2012,3,1), 60),
                   ((2011,6,30,2012,6,30), 366),
                   ((2011,1,1,2012,8,8), 585 ),
