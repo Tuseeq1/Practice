@@ -9,35 +9,26 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
     days_in_months=[31,28,31,30,31,30,31,31,30,31,30,31]
 
     years_inbetween = year2-year1 - 1
-    print years_inbetween
-
     months = 12 - month1 + (years_inbetween * 12) + month2 - 1
-#    print(month1,months,month2)
 
     days = 0
 
     year = year1
     for i in range(month1+1,month1+months+1):
         m = i % 12
-    #    print("m: ",m)
         if m == 2:
-            if  (year % 100)%2==0 and (year % 400)%2 == 0:
+            if year%4==0 and (year%100!=0 or year%400==0):
                 days += 29
-    #            print('added days: ',29)
             else:
                 days += days_in_months[m-1]
-    #            print('added days: ',days_in_months[m-1])
         else:
             days+=days_in_months[m-1]
-    #        print('added days: ',days_in_months[m-1])
 
         if m==0:
             year+=1
 
-    #print days
     days=days + (days_in_months[month1-1] - day1) + day2
 
-    print days
     return days
 
 
