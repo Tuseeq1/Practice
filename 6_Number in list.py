@@ -2,18 +2,42 @@
 # define a procedure that takes in a string of numbers from 1-9 and
 # outputs a list with the following parameters:
 # Every number in the string should be inserted into the list.
-# If the first number in the string is greater than or equal 
-# to the proceeding number, the proceeding number should be inserted 
-# into a sublist. Continue adding to the sublist until the proceeding number 
-# is greater than the first number before the sublist. 
+# If the first number in the string is greater than or equal
+# to the proceeding number, the proceeding number should be inserted
+# into a sublist. Continue adding to the sublist until the proceeding number
+# is greater than the first number before the sublist.
 # Then add this bigger number to the normal list.
 
 #Hint - "int()" turns a string's element into a number
 
 def numbers_in_lists(string):
     # YOUR CODE
-      
-        
+    list=[]
+    sublist=[]
+    i=0
+    while i<len(string)-1:
+        if int(string[i])>=int(string[i+1]):
+            list.append(int(string[i]))
+            current_number=int(string[i])
+
+            while i<len(string)-1 and current_number>=int(string[i+1]) :
+                sublist.append(int(string[i+1]))
+                i=i+1
+
+            list.append(sublist)
+            sublist=[]
+            i+=1
+        else:
+            list.append(int(string[i]))
+
+            if i==len(string)-2:
+                list.append(int(string[i+1]))
+            i+=1
+
+    return list
+
+
+
 
 #testcases
 string = '543987'
