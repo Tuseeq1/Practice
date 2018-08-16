@@ -6,12 +6,18 @@
 # if they do match, is the middle a palindrome?
 
 def is_palindrome(s):
-    # Your code    
+    if len(s)<=1:
+        return True
 
- 
+    if s[0]==s[-1]:
+        return is_palindrome(s[1:-1])
+    else:
+        return False
+
 print is_palindrome('')
 #>>> True
 print is_palindrome('abab')
 #>>> False
 print is_palindrome('abba')
 #>>> True
+print is_palindrome('ababa')
