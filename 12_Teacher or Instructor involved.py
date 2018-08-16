@@ -23,11 +23,11 @@ courses = {
                            'teacher': 'Peter N.',
                            'assistant': 'Andy',
                            'prereq': 'cs101'},
-                 'cs253': 
+                 'cs253':
                 {'name': 'Web Application Engineering - Building a Blog',
                            'teacher': 'Steve',
                            'prereq': 'cs101'},
-                 'cs262': 
+                 'cs262':
                 {'name': 'Programming Languages - Building a Web Browser',
                            'teacher': 'Wes',
                            'assistant': 'Peter C.',
@@ -57,16 +57,26 @@ def courses_offered(courses, hexamester):
         res.append(c)
     return res
 
-# [Double Gold Star] Define a procedure, involved(courses, person), that takes 
-# as input a courses structure and a person and returns a Dictionary that 
-# describes all the courses the person is involved in.  A person is involved 
-# in a course if they are a value for any property for the course.  The output 
-# Dictionary should have hexamesters as its keys, and each value should be a 
-# list of courses that are offered that hexamester (the courses in the list 
+# [Double Gold Star] Define a procedure, involved(courses, person), that takes
+# as input a courses structure and a person and returns a Dictionary that
+# describes all the courses the person is involved in.  A person is involved
+# in a course if they are a value for any property for the course.  The output
+# Dictionary should have hexamesters as its keys, and each value should be a
+# list of courses that are offered that hexamester (the courses in the list
 # can be in any order).
 
 def involved(courses, person):
-    # Your Code here
+    dict={}
+
+    for hexamester in courses:
+        for course in courses[hexamester]:
+            for keys in courses[hexamester][course]:
+                if person==courses[hexamester][course][keys]:
+                    if hexamester not in dict:
+                        dict[hexamester]=[]
+                    dict[hexamester].append(course)
+
+    return dict
 
 
 
@@ -90,4 +100,3 @@ print involved(courses,'Robotic')
 
 print involved(courses, '')
 #>>> {}
-
