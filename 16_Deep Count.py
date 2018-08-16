@@ -1,4 +1,4 @@
-# Deep Count 
+# Deep Count
 
 # The built-in len operator outputs the number of top-level elements in a List,
 # but not the total number of elements. For this question, your goal is to count
@@ -19,7 +19,14 @@ def is_list(p):
 # input is a List, and returns False otherwise.
 
 def deep_count(p):
-    # Your code
+    size=len(p)
+
+    for i in p:
+        if is_list(i):
+            size+=deep_count(i)
+
+    return size
+
 
 
 
@@ -27,13 +34,11 @@ print deep_count([1, 2, 3])
 #>>> 3
 
 # The empty list still counts as an element of the outer list
-print deep_count([1, [], 3]) 
-#>>> 3 
+print deep_count([1, [], 3])
+#>>> 3
 
 print deep_count([1, [1, 2, [3, 4]]])
 #>>> 7
 
 print deep_count([[[[[[[[1, 2, 3]]]]]]]])
 #>>> 10
-
- 
