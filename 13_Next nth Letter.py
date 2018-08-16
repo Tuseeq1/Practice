@@ -4,8 +4,16 @@
 #negative or zero.
 
 def shift_n_letters(letter, n):
-    # Your code here
+    # converting into ascii code for easy addition
+    asciiletter=ord(letter)
+    newletter=asciiletter+n
 
+    if newletter>122:
+        newletter=96+(newletter-122)
+    elif newletter<97:
+        newletter=122-(96-newletter)
+
+    return chr(newletter)
 
 print shift_n_letters('s', 1)
 #>>> t
@@ -15,3 +23,4 @@ print shift_n_letters('s', 10)
 #>>> c
 print shift_n_letters('s', -10)
 #>>> i
+print shift_n_letters('z',1)
