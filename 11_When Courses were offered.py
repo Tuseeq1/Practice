@@ -60,8 +60,13 @@ def courses_offered(courses, hexamester):
 # representing the hexamesters when the input course is offered.
 
 def when_offered(courses,course):
-   # Your code here
 
+    list=[]
+    for semester in courses:
+        if course in courses[semester]:
+            list.append(semester)
+
+    return list
 
 
 
