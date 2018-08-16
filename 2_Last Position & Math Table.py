@@ -8,7 +8,7 @@ def print_multiplication_table( n ):
     if n%1==0 and n>=0:
         for number in range(1,n+1):
             for multiples in range(1,n+1):
-                print +str(number)+' * '+' '+str(multiples)+' = '+str(number*multiples)
+                print str(number)+' * '+' '+str(multiples)+' = '+str(number*multiples)
     else:
         print "Error: Not a positive whole number."
 
