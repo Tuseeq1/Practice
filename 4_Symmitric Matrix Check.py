@@ -5,6 +5,15 @@
 
 def symmetric(matrix):
     # Your code here
+    if len(matrix)!=len(matrix[0]):
+        return False
+
+    transpose=[[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
+
+    if matrix!=transpose:
+        return False
+
+    return True
 
 print symmetric([[1, 2, 3],
                 [2, 3, 4],
