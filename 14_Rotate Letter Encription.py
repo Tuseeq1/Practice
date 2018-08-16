@@ -5,8 +5,21 @@
 # choose to as long as rotate returns the correct string.
 # Note that n can be positive, negative or zero.
 
-def rotate(string, number):    
-    # Your code here
+def rotate(string, number):
+    newstring=''
+    for letter in string:
+        if 'a'<=letter<='z':
+            asciiletter=ord(letter)
+            newletter=asciiletter+number
+
+            if newletter>122:
+                newletter=96+(newletter-122)
+            elif newletter<97:
+                newletter=122-(96-newletter)
+            newstring+=chr(newletter)
+        else:
+            newstring+=letter
+    return newstring
 
 print rotate ('sarah', 13)
 #>>> 'fnenu'
