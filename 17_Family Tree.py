@@ -43,4 +43,3 @@ print ancestors(ada_family, 'Judith Blunt-Lytton')
 
 print ancestors(ada_family, 'Dave')
 #>>> []
-

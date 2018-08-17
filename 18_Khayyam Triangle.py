@@ -27,7 +27,23 @@
 
 
 def triangle(n):
-    # Your code here
+    if n<1:
+        return []
+
+    if n==1:
+        return [[1]]
+    else:
+        list=[]
+        list+=triangle(n-1)
+        newlist=[1]
+
+        for i in range(1,len(list)):
+            newlist.append(list[n-2][i-1]+list[n-2][i])
+
+        newlist.append(1)
+        list.append(newlist)
+
+        return list
 
 
 #For example:
