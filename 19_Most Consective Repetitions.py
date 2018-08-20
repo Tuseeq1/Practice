@@ -11,30 +11,27 @@ def longest_repetition(li):
     if not li:
         return None
 
-    element=''
-    repetitions=0
+    Element = ''
+    repetitions = 0
 
-    i=0
-    while i<len(li)-1:
-        cur_element=li[i]
-        cur_repetition=1
+    cur = ''
+    cur_count = 0
 
-        while li[i+1]==cur_element and i+1<len(li)-1:
-            cur_repetition+=1
-            i+=1
+    for element in li:
+        if element == cur:
+            cur_count += 1
+        else:
+            if cur_count > repetitions:
+                Element = cur
+                repetitions = cur_count
 
-        if cur_repetition>repetitions:
-            repetitions=cur_repetition
-            element=cur_element
-        i+=1
+            cur = element
+            cur_count = 1
 
-    return element
-
-
+    return Element
 
 
-
-#For example,
+# For example,
 
 print longest_repetition([1, 2, 2, 3, 3, 3, 2, 2, 1])
 # 3
@@ -42,7 +39,7 @@ print longest_repetition([1, 2, 2, 3, 3, 3, 2, 2, 1])
 print longest_repetition(['a', 'b', 'b', 'b', 'c', 'd', 'd', 'd'])
 # b
 
-print longest_repetition([1,2,3,4,5])
+print longest_repetition([1, 2, 3, 4, 5])
 # 1
 
 print longest_repetition([])
