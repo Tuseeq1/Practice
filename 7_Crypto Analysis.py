@@ -16,7 +16,7 @@
 
 def freq_analysis(message):
     list=[]
-    symbol_a=97
+    symbol_a=96
     for i in range(1,27):
         frequency=float(message.count(chr(symbol_a+i)))/float(len(message))
         list.append(frequency)
