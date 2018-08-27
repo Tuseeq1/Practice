@@ -10,38 +10,38 @@
 # For example,
 
 courses = {
-    'feb2012': { 'cs101': {'name': 'Building a Search Engine',
-                           'teacher': 'Dave',
-                           'assistant': 'Peter C.'},
-                 'cs373': {'name': 'Programming a Robotic Car',
-                           'teacher': 'Sebastian',
-                           'assistant': 'Andy'}},
-    'apr2012': { 'cs101': {'name': 'Building a Search Engine',
-                           'teacher': 'Dave',
-                           'assistant': 'Sarah'},
-                 'cs212': {'name': 'The Design of Computer Programs',
-                           'teacher': 'Peter N.',
-                           'assistant': 'Andy',
-                           'prereq': 'cs101'},
-                 'cs253':
-                {'name': 'Web Application Engineering - Building a Blog',
-                           'teacher': 'Steve',
-                           'prereq': 'cs101'},
-                 'cs262':
-                {'name': 'Programming Languages - Building a Web Browser',
-                           'teacher': 'Wes',
-                           'assistant': 'Peter C.',
-                           'prereq': 'cs101'},
-                 'cs373': {'name': 'Programming a Robotic Car',
-                           'teacher': 'Sebastian'},
-                 'cs387': {'name': 'Applied Cryptography',
-                           'teacher': 'Dave'}},
-    'jan2044': { 'cs001': {'name': 'Building a Quantum Holodeck',
-                           'teacher': 'Dorina'},
-               'cs003': {'name': 'Programming a Robotic Robotics Teacher',
-                           'teacher': 'Jasper'},
-                     }
-    }
+    'feb2012': {'cs101': {'name': 'Building a Search Engine',
+                          'teacher': 'Dave',
+                          'assistant': 'Peter C.'},
+                'cs373': {'name': 'Programming a Robotic Car',
+                          'teacher': 'Sebastian',
+                          'assistant': 'Andy'}},
+    'apr2012': {'cs101': {'name': 'Building a Search Engine',
+                          'teacher': 'Dave',
+                          'assistant': 'Sarah'},
+                'cs212': {'name': 'The Design of Computer Programs',
+                          'teacher': 'Peter N.',
+                          'assistant': 'Andy',
+                          'prereq': 'cs101'},
+                'cs253':
+                    {'name': 'Web Application Engineering - Building a Blog',
+                     'teacher': 'Steve',
+                     'prereq': 'cs101'},
+                'cs262':
+                    {'name': 'Programming Languages - Building a Web Browser',
+                     'teacher': 'Wes',
+                     'assistant': 'Peter C.',
+                     'prereq': 'cs101'},
+                'cs373': {'name': 'Programming a Robotic Car',
+                          'teacher': 'Sebastian'},
+                'cs387': {'name': 'Applied Cryptography',
+                          'teacher': 'Dave'}},
+    'jan2044': {'cs001': {'name': 'Building a Quantum Holodeck',
+                          'teacher': 'Dorina'},
+                'cs003': {'name': 'Programming a Robotic Robotics Teacher',
+                          'teacher': 'Jasper'},
+                }
+}
 
 
 # For the following questions, you will find the
@@ -57,6 +57,7 @@ def courses_offered(courses, hexamester):
         res.append(c)
     return res
 
+
 # [Double Gold Star] Define a procedure, involved(courses, person), that takes
 # as input a courses structure and a person and returns a Dictionary that
 # describes all the courses the person is involved in.  A person is involved
@@ -66,37 +67,35 @@ def courses_offered(courses, hexamester):
 # can be in any order).
 
 def involved(courses, person):
-    dict={}
+    dict = {}
 
-    for hexamester in courses:
-        for course in courses[hexamester]:
-            for keys in courses[hexamester][course]:
-                if person==courses[hexamester][course][keys]:
+    for hexamester, hexacourse in courses.items():
+        for course_code, course in hexacourse.items():
+            for keys, values in course.items():
+                if person == values:
                     if hexamester not in dict:
-                        dict[hexamester]=[]
-                    dict[hexamester].append(course)
+                        dict[hexamester] = []
+                    dict[hexamester].append(course_code)
 
     return dict
-
-
 
 
 # For example:
 
 print involved(courses, 'Dave')
-#>>> {'apr2012': ['cs101', 'cs387'], 'feb2012': ['cs101']}
+# >>> {'apr2012': ['cs101', 'cs387'], 'feb2012': ['cs101']}
 
 print involved(courses, 'Peter C.')
-#>>> {'apr2012': ['cs262'], 'feb2012': ['cs101']}
+# >>> {'apr2012': ['cs262'], 'feb2012': ['cs101']}
 
 print involved(courses, 'Dorina')
-#>>> {'jan2044': ['cs001']}
+# >>> {'jan2044': ['cs001']}
 
-print involved(courses,'Peter')
-#>>> {}
+print involved(courses, 'Peter')
+# >>> {}
 
-print involved(courses,'Robotic')
-#>>> {}
+print involved(courses, 'Robotic')
+# >>> {}
 
 print involved(courses, '')
-#>>> {}
+# >>> {}
