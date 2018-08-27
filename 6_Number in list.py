@@ -11,30 +11,22 @@
 #Hint - "int()" turns a string's element into a number
 
 def numbers_in_lists(string):
-    # YOUR CODE
-    list=[]
+    finallist=[int(string[0])]
     sublist=[]
-    i=0
-    while i<len(string)-1:
-        if int(string[i])>=int(string[i+1]):
-            list.append(int(string[i]))
-            current_number=int(string[i])
 
-            while i<len(string)-1 and current_number>=int(string[i+1]) :
-                sublist.append(int(string[i+1]))
-                i=i+1
+    for i in string:
+        if int(i)>finallist[-1] and i != string[0]:
+            if sublist:
+                finallist.append(sublist)
+                sublist=[]
+            finallist.append(int(i))
+        elif i != string[0]:
+            sublist.append(int(i))
 
-            list.append(sublist)
-            sublist=[]
-            i+=1
-        else:
-            list.append(int(string[i]))
+    if sublist:
+        finallist.append(sublist)
 
-            if i==len(string)-2:
-                list.append(int(string[i+1]))
-            i+=1
-
-    return list
+    return finallist
 
 
 
