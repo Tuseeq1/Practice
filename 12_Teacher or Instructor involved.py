@@ -67,17 +67,17 @@ def courses_offered(courses, hexamester):
 # can be in any order).
 
 def involved(courses, person):
-    dict = {}
+    courses_involved = {}
 
     for hexamester, hexacourse in courses.items():
         for course_code, course in hexacourse.items():
-            for keys, values in course.items():
-                if person == values:
-                    if hexamester not in dict:
-                        dict[hexamester] = []
-                    dict[hexamester].append(course_code)
+            for key, value in course.items():
+                if person == value:
+                    if hexamester not in courses_involved:
+                        courses_involved[hexamester] = []
+                        courses_involved[hexamester].append(course_code)
 
-    return dict
+    return courses_involved
 
 
 # For example:
