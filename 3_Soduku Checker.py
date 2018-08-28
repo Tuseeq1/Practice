@@ -60,10 +60,24 @@ matrix6 = [[1,1.5,3],[3,1,1.5],[1.5,3,1]]
 
 
 def check_sudoku(matrix):
-    # You code goes here
-    return True or False
+    try:
+        # checking condition number 2. for valid saduku table
+        for row in matrix:
+            for number in row:
+                if row.count(number)>1 or number%1!=0 or number<=0 or number>len(matrix):
+                    return False
+        transpose=[[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
+        # checking condition number 1. for valid saduku table
+        for row in transpose:
+            for number in row:
+                if row.count(number)>1 or number%1!=0 or number<=0 or number>len(matrix):
+                    return False
+        return True
+    # To check if matrix contain anything other than numbers.
+    except TypeError:
+        return False
 
-    
+
 print check_sudoku(incorrect)
 #>>> False
 
