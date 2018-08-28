@@ -4,13 +4,16 @@
 # boolean True if the list is symmetric and False if it is not.
 
 def symmetric(matrix):
-    if len(matrix) != len(matrix[0]):
-        return False
+    try:
+        l=len(matrix[0])
+        for i in range(l):
+            for j in range(l):
+                if matrix[i][j] != matrix[j][i]:
+                    return False
 
-    transpose = [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
-    if matrix != transpose:
+        return True
+    except IndexError:
         return False
-    return True
 
 
 print symmetric([[1, 2, 3],
