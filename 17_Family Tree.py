@@ -7,8 +7,7 @@
 # given a Dictionary that provides the parent relationships.
 
 # Here's an example of an input Dictionary:
-#
-#	{<person>: [<father>, <mother>], … }
+
 #
 
 ada_family = { 'Judith Blunt-Lytton': ['Anne Isabella Blunt', 'Wilfrid Scawen Blunt'],
@@ -27,7 +26,16 @@ ada_family = { 'Judith Blunt-Lytton': ['Anne Isabella Blunt', 'Wilfrid Scawen Bl
 # does not matter and duplicates will be ignored.
 
 def ancestors(genealogy, person):
-    # your code here
+
+    family=[]
+
+    if person not in genealogy:
+        return family
+    else:
+        for parent in genealogy[person]:
+            family.append(parent)
+            family+=ancestors(genealogy,parent)
+        return family
 
 
 # Here are some examples:
@@ -43,4 +51,3 @@ print ancestors(ada_family, 'Judith Blunt-Lytton')
 
 print ancestors(ada_family, 'Dave')
 #>>> []
-

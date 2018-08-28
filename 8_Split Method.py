@@ -15,18 +15,29 @@
 
 
 def split_string(source, splitlist):
-    # Your Code
+    result=[]
+    substring=''
 
+    for i in source:
+        if i not in splitlist:
+            substring+=i
+        elif substring!='':
+            result.append(substring)
+            substring=''
+    if substring!='':
+        result.append(substring)
+
+    return result
 
 
 out = split_string("This is a test-of the,string separation-code!"," ,!-")
 print out
 #>>> ['This', 'is', 'a', 'test', 'of', 'the', 'string', 'separation', 'code']
 
-#out = split_string("After  the flood   ...  all the colors came out.", " .")
-#print out
+out = split_string("After  the flood   ...  all the colors came out.", " .")
+print out
 #>>> ['After', 'the', 'flood', 'all', 'the', 'colors', 'came', 'out']
 
-#out = split_string("First Name,Last Name,Street Address,City,State,Zip Code",",")
-#print out
+out = split_string("First Name,Last Name,Street Address,City,State,Zip Code",",")
+print out
 #>>>['First Name', 'Last Name', 'Street Address', 'City', 'State', 'Zip Code']

@@ -5,17 +5,28 @@
 # choose to as long as rotate returns the correct string.
 # Note that n can be positive, negative or zero.
 
-def rotate(string, number):    
-    # Your code here
+def rotate(string, number):
+    newstring = ''
+    for letter in string:
+        if 'a' <= letter <= 'z':
+            asciiletter = ord(letter) - 96
+            newletter = (asciiletter + number) % 26 + 96
 
-print rotate ('sarah', 13)
-#>>> 'fnenu'
-print rotate('fnenu',13)
-#>>> 'sarah'
-print rotate('dave',5)
-#>>>'ifaj'
-print rotate('ifaj',-5)
-#>>>'dave'
+            newstring += chr(newletter)
+
+        else:
+            newstring += letter
+    return newstring
+
+
+print rotate('sarah', 13)
+# >>> 'fnenu'
+print rotate('fnenu', 13)
+# >>> 'sarah'
+print rotate('dave', 5)
+# >>>'ifaj'
+print rotate('ifaj', -5)
+# >>>'dave'
 print rotate(("zw pfli tfuv nfibj tfiivtkcp pfl jyflcu "
-                "sv rscv kf ivru kyzj"),-17)
-#>>> ???
+              "sv rscv kf ivru kyzj"), -17)
+# >>> ???
